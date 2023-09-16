@@ -6,41 +6,42 @@ int main(){
 
     char input[420];
     char input2[420];
-    printf("CPAD V 0.0.1 \ntype **/commands for commands\nwrite something\n");
+    printf("CPAD V 0.0.2 \ntype **/commands for commands\nwrite something\n");
     int exit = 0;
     while (exit == 0){
 
     gets(input2);
+    FILE *fop;
     
-    strcat(input, input2); 
 
     if (strcmp(input2, "**/commands") == 0){
-        printf("\n\n===commands\nprefix: **/\n**/save: it will save it as file.txt \n more commands coming soon if my lazy ass will continue the project");
+        printf("\n\n===commands\nprefix: **/\n**/save: it will save it as file.txt \n**/open: opens file.txt \n **/exit: i don't think i need to explain this\nmore commands coming soon!");
     }
-     if (strcmp(input2, "**/save") == 0){
+    else if (strcmp(input2, "**/save") == 0){
         
         fl = fopen("file.txt", "w");
-        fprintf(fl, "%s", input);
+        input[0] = ' ';
+        fprintf(fl, input);
         fclose(fl);
 
         printf("\n\nsaved!");
 
     }
-    if (strcmp(input2, "d") == 0) {
-        printf("-.-");
-    }
-        if (strcmp(input, "**/exit") == 0){
+    else if (strcmp(input2, "**/exit") == 0){
         exit == 1;
         break;
     }
-
+    else if (strcmp(input2, "**/open") == 0){
+        fop = fopen("file.txt","r");    
+        fgets(input, 420, fop);
+        printf("%s", input);
+        fclose(fop);
+    }
+    else{
+        strcat(input, input2); 
     }
 
-    
-  
-
-    
-
-
+    }
     return 0;
 }
+
