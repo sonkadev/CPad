@@ -6,7 +6,7 @@ int main(){
 
     char input[420];
     char input2[420];
-    printf("CPAD V 0.0.2 \ntype **/commands for commands\nwrite something\n");
+    printf("CPAD V 0.0.3 \ntype **/commands for commands\nwrite something\n");
     int exit = 0;
     while (exit == 0){
 
@@ -15,7 +15,7 @@ int main(){
     
 
     if (strcmp(input2, "**/commands") == 0){
-        printf("\n\n===commands\nprefix: **/\n**/save: it will save it as file.txt \n**/open: opens file.txt \n **/exit: i don't think i need to explain this\nmore commands coming soon!");
+        printf("\n\n===commands\nprefix: **/\n**/save: it will save it as file.txt \n**/open: opens file.txt \n**/exit: i don't think i need to explain this\nmore commands coming soon!\n");
     }
     else if (strcmp(input2, "**/save") == 0){
         
@@ -24,7 +24,7 @@ int main(){
         fprintf(fl, input);
         fclose(fl);
 
-        printf("\n\nsaved!");
+        printf("\nsaved!\n");
 
     }
     else if (strcmp(input2, "**/exit") == 0){
@@ -37,10 +37,20 @@ int main(){
         printf("%s", input);
         fclose(fop);
     }
+     else if (strcmp(input2, "**/clear") == 0){
+         strcat(input, " "); 
+         strcat(input2, " "); 
+        }
+    /*else if (strcmp(input2, "*import")){
+        fop = fopen("file.txt","rb");
+        strcat(fop, input);
+    }
+    *ill leave this for now
+    */
     else{
         strcat(input, input2); 
     }
-
+    
     }
     return 0;
 }
