@@ -6,7 +6,7 @@ int main(){
 
     char input[420];
     char input2[420];
-    printf("CPAD V 0.0.3 \ntype **/commands for commands\nwrite something\n");
+    printf("CPAD V 0.0.4 \ntype **/commands for commands\nwrite something\n");
     int exit = 0;
     while (exit == 0){
 
@@ -19,8 +19,8 @@ int main(){
     }
     else if (strcmp(input2, "**/save") == 0){
         
-        fl = fopen("file.txt", "w");
-        input[0] = ' ';
+        fl = fopen("file.txt", "wt");
+
         fprintf(fl, input);
         fclose(fl);
 
@@ -38,17 +38,16 @@ int main(){
         fclose(fop);
     }
      else if (strcmp(input2, "**/clear") == 0){
-         strcat(input, " "); 
-         strcat(input2, " "); 
+         strcpy(input, " "); 
+         strcpy(input2, " "); 
         }
     /*else if (strcmp(input2, "*import")){
         fop = fopen("file.txt","rb");
         strcat(fop, input);
     }
-    *ill leave this for now
-    */
+*/
     else{
-        strcat(input, input2); 
+        strcpy(input, input2); 
     }
     
     }
