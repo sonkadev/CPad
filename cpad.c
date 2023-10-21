@@ -7,7 +7,7 @@ int main(){
     int lines = 0;
     char input[420];
     char input2[420];
-    printf("CPAD V 0.0.5 \ntype **/commands for commands\nwrite something\n");
+    printf("CPAD V 0.0.6 \ntype **/commands for commands\nwrite something\n");
     int exit = 0;
     while (exit == 0){
     char filename[260];
@@ -53,6 +53,16 @@ int main(){
         printf("\nsaved as %s!\n", filename);
        
     }
+     else if (strcmp(input2, "**/openas") == 0){
+        
+        printf("\nenter file's name\n");
+        gets(filename);
+        fop = fopen(filename, "r");
+        while( fgets (input, 420, fop)!=NULL ) {
+            printf("%s", input);
+        }
+        fclose (fop);
+     }
     else if (strcmp(input2, "**/exit") == 0){
         exit == 1;
         break;
@@ -71,8 +81,8 @@ int main(){
     /*else if (strcmp(input2, "*import")){
         fop = fopen("file.txt","rb");
         strcat(fop, input);
-    }
-*/
+    }*/
+    
     else{
         strcpy(input, input2); 
         
