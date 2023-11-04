@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main(){
     FILE *fl;
@@ -7,7 +8,7 @@ int main(){
     int lines = 0;
     char input[420];
     char input2[420];
-    printf("CPAD V 0.0.6 \ntype **/commands for commands\nwrite something\n");
+    printf("CPAD V 0.0.7 \ntype **/commands for commands\nwrite something\n \n%d ", lines+1);
     int exit = 0;
     while (exit == 0){
     char filename[260];
@@ -31,7 +32,7 @@ int main(){
         fclose(fl);
 
         printf("\nsaved!\n");
-
+        printf("\n%d ", lines+1); 
         
     }
     else if (strcmp(input2, "**/saveas") == 0){
@@ -51,7 +52,7 @@ int main(){
         fclose(fl2);
 
         printf("\nsaved as %s!\n", filename);
-       
+       printf("\n%d ", lines+1); 
     }
      else if (strcmp(input2, "**/openas") == 0){
         
@@ -62,6 +63,7 @@ int main(){
             printf("%s", input);
         }
         fclose (fop);
+        printf("\n%d ", lines+1); 
      }
     else if (strcmp(input2, "**/exit") == 0){
         exit == 1;
@@ -72,22 +74,40 @@ int main(){
         fgets(input, 420, fop);
         printf("%s", input);
         fclose(fop);
+        printf("\n%d ", lines+1); 
     }
      else if (strcmp(input2, "**/clear") == 0){
          strcpy(input, " "); 
          strcpy(input2, " "); 
          lines = 0;
+         printf("\n%d ", lines+1); 
         }
-    /*else if (strcmp(input2, "*import")){
-        fop = fopen("file.txt","rb");
-        strcat(fop, input);
-    }*/
+    else if (strcmp(input2, "**/goto") == 0){
+        int prevlines;
+        prevlines = lines;
+        char linenumber[420];
+        char gotoinput[420];
+        printf("\nenter line\n");
+        gets(linenumber);
+        printf("\nenter text\n");
+        gets(gotoinput);
+        //printf("sor meg nem lett atkonvertalva");
+        int convert = atoi(linenumber);
+        //printf("sor at lett konvertalva");
+        lines = convert-1;
+        
+        strcpy(inputmatrix[lines], gotoinput); 
+        
+        lines = prevlines;
+        printf("\n%d ", lines+1); 
+    }
     
     else{
         strcpy(input, input2); 
         
         strcpy(inputmatrix[lines], input2);
         lines++;
+        printf("%d ", lines+1 );
     }
     
     }
